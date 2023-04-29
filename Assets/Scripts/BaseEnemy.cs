@@ -13,7 +13,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     public Vector2 DirToPlayer;
     Transform PlayerTransform;
     bool isTrackingPlayer;
-
+    public GameObject morselPrefab;
     Rigidbody2D _rb;
     public Animator _anim;
     public event System.Action deathEvent;
@@ -36,7 +36,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         _rb.AddForce(-DirToPlayer *5f);
         currHP -= damage;
         //play hurt anim here
-        if(currHP <=0){
+        if(currHP <=0 && gameObject.activeInHierarchy){
             Die();
         }
     }
@@ -47,7 +47,11 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         }
         //Play audio 
         //Play anim
+        Vector2 dir = (transform.position - PlayerTransform.position).normalized;
+        VFXManager.instance.BloodSplat(dir,transform.position);
+        VFXManager.instance.BloodSpray(transform.position);
         //spawn gibs
+        Instantiate(morselPrefab,transform.position,Quaternion.identity);
         gameObject.SetActive(false);
 
     }
