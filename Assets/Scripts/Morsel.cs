@@ -13,18 +13,23 @@ public class Morsel : MonoBehaviour
     {
         playerTransform = PlayerMovement.instance.transform;
         _rb = GetComponent<Rigidbody2D>();
-        _rb.AddTorque(Random.Range(-12f,12f),ForceMode2D.Impulse);
+        _rb.AddTorque(Random.Range(-1f,1f),ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Vector2.Distance(transform.position,PlayerMovement.instance.transform.position) <= 0.2f){
-            gameObject.SetActive(false);
-        }
         spawnTime+=Time.deltaTime;
         if(spawnTime >= 1f && !isPlayerSpawned){
             transform.position += (playerTransform.position - transform.position).normalized * Time.deltaTime * 5f;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if(collision.collider.CompareTag("Player")){
+            //Add to player morsel score
+            ScoreManager.instance.AddMorselScore();
+            gameObject.SetActive(false);
         }
     }
 }
