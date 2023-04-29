@@ -27,9 +27,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     [Button]
     void ExplodeMorsels(){
+        CamShaker.instance.Trauma+= 0.2f;
         StartCoroutine(InvulnerabilityFrames());
         for(int i =0; i< ScoreManager.instance.MorselCount; ++i){
             GameObject morselClone = Instantiate(morselPrefab,transform.position+(Vector3)Random.insideUnitCircle,Quaternion.identity);
+            morselClone.transform.SetParent(ObjectManager.instance.transform);
             morselClone.GetComponent<Morsel>().isPlayerSpawned = true;
             morselClone.GetComponent<Rigidbody2D>().AddForce((morselClone.transform.position-transform.position).normalized * 5f,ForceMode2D.Impulse);
         }

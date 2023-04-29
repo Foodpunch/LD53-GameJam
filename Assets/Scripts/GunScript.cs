@@ -49,8 +49,9 @@ public class GunScript : MonoBehaviour
     void SpawnBullet(){
         for(int i =0; i<pelletCount; ++i){
            float spreadRange = Random.Range(-(spreadAngle * pelletCount), spreadAngle * pelletCount);
-                Quaternion randomArc = Quaternion.Euler(0, 0, spreadRange);
-                GameObject bulletClone = Instantiate(bulletPrefab, shootPoint.position, transform.rotation * randomArc);
+            Quaternion randomArc = Quaternion.Euler(0, 0, spreadRange);
+            GameObject bulletClone = Instantiate(bulletPrefab, shootPoint.position, transform.rotation * randomArc);
+            bulletClone.transform.SetParent(ObjectManager.instance.transform);
         }
     }
 }

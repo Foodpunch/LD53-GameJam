@@ -19,7 +19,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     public event System.Action deathEvent;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         currHP = MaxHP;
@@ -27,7 +27,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         DirToPlayer = PlayerTransform.position - transform.position;
         DirToPlayer.Normalize();
@@ -51,7 +51,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         VFXManager.instance.BloodSplat(dir,transform.position);
         VFXManager.instance.BloodSpray(transform.position);
         //spawn gibs
-        Instantiate(morselPrefab,transform.position,Quaternion.identity);
+        GameObject morselClone = Instantiate(morselPrefab,transform.position,Quaternion.identity);
+        morselClone.GetComponent<Rigidbody2D>().AddForce(dir*Random.Range(1f,2f),ForceMode2D.Impulse);
+        morselClone.transform.SetParent(ObjectManager.instance.transform);
         gameObject.SetActive(false);
 
     }

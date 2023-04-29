@@ -34,7 +34,6 @@ public class BulletScript : MonoBehaviour
     void Despawn(){
         _rb.Sleep();
         gameObject.SetActive(false);
-        //spawn poof smoke here
     }
 
     void OnCollisionEnter2D(Collision2D collision){
@@ -42,6 +41,9 @@ public class BulletScript : MonoBehaviour
             SendDamage(collision.collider);
             if(collision.collider.GetComponent<IDamageable>() == null){
                 //spawn sparks animation because we prolly hit a wall
+                VFXManager.instance.Spark(transform.position,collision.contacts[0].normal);
+                //spawn poof smoke here
+                VFXManager.instance.Poof(transform.position);
             }
             Despawn();
         }
