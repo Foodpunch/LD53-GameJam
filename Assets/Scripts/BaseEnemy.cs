@@ -6,12 +6,12 @@ using NaughtyAttributes;
 public class BaseEnemy : MonoBehaviour, IDamageable
 {
 
-    float MaxHP = 1f;
+    protected float MaxHP = 1f;
     public float currHP;
 
     public float moveSpeed;
     public Vector2 DirToPlayer;
-    Transform PlayerTransform;
+    protected Transform PlayerTransform;
     bool isTrackingPlayer;
     public GameObject morselPrefab;
     Rigidbody2D _rb;
@@ -61,6 +61,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         if(collision.collider.CompareTag("Player")){
             //Send 1 damage to the player
             collision.collider.GetComponent<IDamageable>()?.OnTakeDamage(1);
+            Debug.Log("HIT PLAYER");
             //maybe get knocked back?
         }
     }
