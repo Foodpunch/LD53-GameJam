@@ -38,7 +38,7 @@ public class Room : MonoBehaviour
         }
     }
     void Start(){
-        GenerateWalls();
+        //GenerateWalls();
     }
     [Button]
     public void GenerateWalls(){
@@ -46,25 +46,39 @@ public class Room : MonoBehaviour
             for(int y = 0; y < size.y; ++y){
                 if(y==0){
                     if(Exits.Contains(Vector2Int.up)){
-                        if(x == 10 || x == 9) continue;
+                        if(x == (int)(size.x/2)) continue;
+                        if(x == (int)(size.x/2)-1) continue;
                     }
                 } 
                 if(y==size.y-1){
                     if(Exits.Contains(Vector2Int.down)){
-                        if(x == 10 || x == 9) continue;
+                        if(x == (int)(size.x/2)) continue;
+                        if(x == (int)(size.x/2)-1) continue;
                     }
                 }
                 if(x == 0){
                     if(Exits.Contains(Vector2Int.left)){
-                        if(y == 10 || y == 9) continue;
+                        if(y == (int)(size.y/2)) continue;
+                        if(y == (int)(size.y/2)-1) continue;
                     } 
                 }
                 if(x==size.x-1){
                     if(Exits.Contains(Vector2Int.right)){
-                        if(y == 10 || y == 9) continue;
+                        if(y == (int)(size.y/2)) continue;
+                        if(y == (int)(size.y/2)-1) continue;
                     }
                 }
                 if( (y > 0 && y < size.y-1) && (x > 0 && x < size.x-1)) continue;
+                GameObject wallClone = Instantiate(WallObj);
+                wallClone.transform.SetParent(gameObject.transform);
+                wallClone.transform.localPosition = new Vector3(x-(size.x/2),y-(size.y/2),0);
+            }
+        }
+    }
+    [Button]
+    public void GenerateFloor(){
+        for(int y = 0; y < size.y; ++y){
+            for(int x = 0; x < size.x; ++x){
                 GameObject wallClone = Instantiate(WallObj);
                 wallClone.transform.SetParent(gameObject.transform);
                 wallClone.transform.localPosition = new Vector3(x-(size.x/2),y-(size.y/2),0);

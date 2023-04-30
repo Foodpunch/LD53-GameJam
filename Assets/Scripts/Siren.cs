@@ -25,7 +25,7 @@ public class Siren : BaseEnemy
         shootTimer += Time.deltaTime;
         if(Vector2.Distance(transform.position, PlayerTransform.position) <= detectionRange){
             //Play spawn animation
-            if(shootTimer >=.15f){
+            if(shootTimer >=.2f){
                 Shoot();
                 shootTimer = 0;
             }

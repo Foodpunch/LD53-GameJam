@@ -8,6 +8,8 @@ public class Manticore : BaseEnemy
     GameObject bulletPrefab;
     [SerializeField]
     Transform shootPoint;
+    [SerializeField]
+    Transform gunHolder;
     enum ManticoreState{
         IDLE,
         MOVE,
@@ -37,6 +39,11 @@ public class Manticore : BaseEnemy
         base.Update();
         stateTimer += Time.deltaTime;
         distanceToPlayer = Vector2.Distance(transform.position,PlayerTransform.transform.position);
+        if(isTrackingPlayer){
+            gunHolder.transform.right = DirToPlayer;
+            float angle = gunHolder.transform.rotation.eulerAngles.z;
+            gunHolder.GetComponent<SpriteRenderer>().flipY = (angle > 90f && angle < 270f);
+        }
         switch(_state){
             case ManticoreState.IDLE:
             if(stateTimer >= 2f){
@@ -56,7 +63,7 @@ public class Manticore : BaseEnemy
             if(isTrackingPlayer){
                 //If tracking player, sprite should always be facing the player direction
                 //If the player is too close
-                shootPoint.transform.right = DirToPlayer;
+             
                 if(distanceToPlayer <= minRange){
                     _rb.MovePosition((Vector2)transform.position - DirToPlayer*moveSpeed*Time.fixedDeltaTime);
                 } else {

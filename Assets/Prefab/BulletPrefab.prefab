@@ -85,7 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDespawnTime: 0.15
   bulletSpeed: 20
-  bulletDamage: 0.1
+  bulletDamage: 0.3
   bulletLayer:
     serializedVersion: 2
     m_Bits: 0
