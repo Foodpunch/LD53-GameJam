@@ -10,7 +10,7 @@ public class BulletScript : MonoBehaviour
     [SerializeField]
     float bulletSpeed;
 
-    public float bulletDamage = 1f;
+    public float bulletDamage = 0.5f;
 
     public LayerMask bulletLayer;
     Rigidbody2D _rb;

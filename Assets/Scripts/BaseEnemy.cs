@@ -12,9 +12,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     public float moveSpeed;
     public Vector2 DirToPlayer;
     protected Transform PlayerTransform;
-    bool isTrackingPlayer;
+    protected bool isTrackingPlayer;
     public GameObject morselPrefab;
-    Rigidbody2D _rb;
+    protected Rigidbody2D _rb;
     public Animator _anim;
     public event System.Action deathEvent;
 
@@ -32,8 +32,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         DirToPlayer = PlayerTransform.position - transform.position;
         DirToPlayer.Normalize();
     }
-    public void OnTakeDamage(float damage){
+    public virtual void OnTakeDamage(float damage){
         _rb.AddForce(-DirToPlayer *5f);
+        Debug.Log(damage);
         currHP -= damage;
         //play hurt anim here
         if(currHP <=0 && gameObject.activeInHierarchy){
@@ -41,7 +42,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         }
     }
     [Button]
-    void Die(){
+    protected virtual void Die(){
         if(deathEvent!=null){
             deathEvent();
         }
