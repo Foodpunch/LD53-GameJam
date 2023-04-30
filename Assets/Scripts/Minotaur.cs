@@ -95,6 +95,13 @@ public class Minotaur : BaseEnemy
             stateTimer = 0;
         }
     }
+    protected override void Die()
+    {
+        base.Die();
+        _state = MinotaurState.DEAD;
+        stateTimer = 0;
+        
+    }
     void OnDrawGizmos(){
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position,detectionRange);
