@@ -23,7 +23,7 @@ public class Cyclops : BaseEnemy
     [SerializeField]
     CyclopsState _state = CyclopsState.IDLE;
     Vector2 cachedPosition;
-    float lineWidthMult = 1f;
+    // float lineWidthMult = 1f;
 
     [SerializeField]
     LayerMask rayLayer;
