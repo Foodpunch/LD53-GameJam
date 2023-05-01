@@ -30,12 +30,16 @@ public class Minotaur : BaseEnemy
     LayerMask rayLayer;
     [SerializeField]
     LayerMask chargeLayer;
+
+    [SerializeField]
+    SpriteRenderer _sr;
     // Start is called before the first frame update
     protected override void Start()
     {
         MaxHP = 20f;
         base.Start();
         randomDir = DirectionsList[Random.Range(0,DirectionsList.Count)];
+        _anim = GetComponent<Animator>();
         
     }
 
@@ -58,17 +62,21 @@ public class Minotaur : BaseEnemy
                 stateTimer = 0;
             }
             Debug.DrawRay(transform.position,randomDir*detectionRange,Color.red,Time.deltaTime);
+            _sr.flipX = (Vector2.Dot(randomDir.normalized,Vector2.right)>0);
+
             break;
             case MinotaurState.PREP:
             //play prep animation here
             if(stateTimer >= 2f){
                 cachedDir = DirToPlayer;
                 _state = MinotaurState.CHARGE;
+                _anim.SetTrigger("Charge");
                 stateTimer = 0;
             }
             break;
             case MinotaurState.CHARGE:
             _rb.MovePosition((Vector2)transform.position+(cachedDir*moveSpeed*1.5f)*Time.fixedDeltaTime);
+            _sr.flipX = (Vector2.Dot(cachedDir.normalized,Vector2.right)>0);
             // RaycastHit2D chargeRayCheck = Physics2D.Raycast(transform.position,cachedDir,1f,chargeLayer);
             // if(chargeRayCheck.collider !=null){
             //     _state = MinotaurState.STUCK;
@@ -86,11 +94,13 @@ public class Minotaur : BaseEnemy
             case MinotaurState.DEAD:
             break;
         }
+
     }
     protected override void OnCollisionEnter2D(Collision2D collision){
         base.OnCollisionEnter2D(collision);      
         if(collision.collider!=null){
             if(_state== MinotaurState.STUCK) return;
+            _anim.SetTrigger("Stunned");
             _state = MinotaurState.STUCK;
             stateTimer = 0;
         }

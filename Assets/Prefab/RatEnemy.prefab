@@ -208,8 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0a6690aca44284fb35c454eabed13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 1
   currHP: 0
   moveSpeed: 3.5
   DirToPlayer: {x: 0, y: 0}
   morselPrefab: {fileID: 4465858225629218673, guid: ef6306cc3537ce545886fd0e7051ab67, type: 3}
   _anim: {fileID: 0}
+  _sr: {fileID: 7292016965951630213}

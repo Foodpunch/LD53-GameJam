@@ -30,6 +30,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     PlayerState _state;
 
+    [SerializeField]
+    Animator PlayerAnim;
+
+    [SerializeField]
+    SpriteRenderer _sr;
+
     void Awake(){
         instance = this;
     }
@@ -38,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _state = PlayerState.NORMAL;
+        PlayerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -53,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.DEAD:
             break;
         }
+        PlayerAnim.SetFloat("Speed",moveVelocity.magnitude);
     }
     void FixedUpdate(){
         _rb.MovePosition(_rb.position+moveVelocity*Time.fixedDeltaTime);
@@ -60,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     void PlayerMovementInput(){
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
         moveVelocity = playerInput * moveSpeed;
-        //if velocity > certain number, play walking anim
+        _sr.flipX = (Vector2.Dot(playerInput.normalized,Vector2.right)>0);
     }
 
     void SetGunPointToMouse(){

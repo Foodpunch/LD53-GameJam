@@ -11,11 +11,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     int IFrameLayer;
     int PlayerLayer;
     public bool isInvulnerable = false;
+
     // Start is called before the first frame update
     void Start()
     {
         IFrameLayer = LayerMask.NameToLayer("IFrame");
         PlayerLayer = LayerMask.NameToLayer("Player");
+        // _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -54,6 +56,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         yield return new WaitForSecondsRealtime(2f);
         gameObject.layer = PlayerLayer;
         isInvulnerable = false;
+
     }
 
 

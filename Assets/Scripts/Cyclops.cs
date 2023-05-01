@@ -43,7 +43,7 @@ public class Cyclops : BaseEnemy
         switch(_state){
             case CyclopsState.IDLE:
                 if(Vector2.Distance(transform.position,PlayerTransform.position)<= detectionRange){
-                    if(shootTimer >= 1f){
+                    if(shootTimer >= .5f){
                         _state = CyclopsState.TRACK;
                         shootTimer = 0;
                     }
@@ -55,7 +55,7 @@ public class Cyclops : BaseEnemy
             break;
             case CyclopsState.TRACK:
                 _line.SetPosition(1,PlayerTransform.position); 
-                if(shootTimer >= 2f){
+                if(shootTimer >= 1f){
                     cachedPosition = PlayerTransform.position;
                     _state = CyclopsState.PREP;
                     _anim.SetTrigger("Prep");

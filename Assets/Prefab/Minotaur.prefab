@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8269750345639356249}
   - component: {fileID: 8269750345639356250}
   - component: {fileID: 8269750345639356246}
+  - component: {fileID: 3356938093352669052}
   m_Layer: 8
   m_Name: Minotaur
   m_TagString: Untagged
@@ -115,6 +116,26 @@ MonoBehaviour:
   chargeLayer:
     serializedVersion: 2
     m_Bits: 1
+  _sr: {fileID: 8269750345851125879}
+--- !u!95 &3356938093352669052
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8269750345639356251}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9a199ac9c07ece4c9d244082521d798, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8269750345851125881
 GameObject:
   m_ObjectHideFlags: 0

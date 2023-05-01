@@ -26,6 +26,9 @@ public class Manticore : BaseEnemy
     Vector2 randomDir = Vector2.zero;
     [SerializeField]
     LayerMask rayLayer;
+
+    [SerializeField]
+    SpriteRenderer _sr;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -90,7 +93,9 @@ public class Manticore : BaseEnemy
                     stateTimer = 0;
                 }
             }
-
+            if(Vector2.Dot(randomDir,Vector2.right)>0){
+                _sr.transform.localScale = new Vector3(-1,1,1);
+            } else _sr.transform.localScale = new Vector3(1,1,1);
             break;
             case ManticoreState.SHOOT:
             //play shoot anim
