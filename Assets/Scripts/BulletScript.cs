@@ -14,7 +14,8 @@ public class BulletScript : MonoBehaviour
 
     public LayerMask bulletLayer;
     Rigidbody2D _rb;
-
+    [SerializeField]
+    bool isDisableParticles = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +41,12 @@ public class BulletScript : MonoBehaviour
         if(collision !=null){
             SendDamage(collision.collider);
             if(collision.collider.GetComponent<IDamageable>() == null){
-                //spawn sparks animation because we prolly hit a wall
-                VFXManager.instance.Spark(transform.position,collision.contacts[0].normal);
-                //spawn poof smoke here
-                VFXManager.instance.Poof(transform.position);
+                if(!isDisableParticles) {
+                    //spawn sparks animation because we prolly hit a wall
+                    VFXManager.instance.Spark(transform.position,collision.contacts[0].normal);
+                    //spawn poof smoke here
+                    VFXManager.instance.Poof(transform.position);
+                }
             }
             Despawn();
         }

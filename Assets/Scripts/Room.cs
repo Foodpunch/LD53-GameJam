@@ -16,7 +16,9 @@ public class Room : MonoBehaviour
 
     [SerializeField]
     GameObject WallObj;
-
+    [SerializeField]
+    GameObject FloorTile;
+    
     public bool isStart = false;
     public bool isEnd = false;
 
@@ -70,8 +72,11 @@ public class Room : MonoBehaviour
                 }
                 if( (y > 0 && y < size.y-1) && (x > 0 && x < size.x-1)) continue;
                 GameObject wallClone = Instantiate(WallObj);
+                int rand = Random.Range(0,101);
+                if(rand < 5) wallClone.transform.GetChild(0).gameObject.SetActive(true);
                 wallClone.transform.SetParent(gameObject.transform);
                 wallClone.transform.localPosition = new Vector3(x-(size.x/2),y-(size.y/2),0);
+
             }
         }
     }
@@ -79,7 +84,7 @@ public class Room : MonoBehaviour
     public void GenerateFloor(){
         for(int y = 0; y < size.y; ++y){
             for(int x = 0; x < size.x; ++x){
-                GameObject wallClone = Instantiate(WallObj);
+                GameObject wallClone = Instantiate(FloorTile);
                 wallClone.transform.SetParent(gameObject.transform);
                 wallClone.transform.localPosition = new Vector3(x-(size.x/2),y-(size.y/2),0);
             }

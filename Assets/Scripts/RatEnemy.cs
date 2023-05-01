@@ -12,7 +12,7 @@ public class RatEnemy : BaseEnemy
     // Start is called before the first frame update
     protected override void Start()
     {
-        MaxHP = 5f;
+        MaxHP = 0.3f;
         base.Start();
         cachedSpawnPos = transform.position;
         agent = GetComponent<NavMeshAgent>();

@@ -9,7 +9,7 @@ public class RatNest : BaseEnemy
     // Start is called before the first frame update
     protected override void Start()
     {
-        MaxHP = 3f;
+        MaxHP = 1f;
         base.Start();
     }
 
