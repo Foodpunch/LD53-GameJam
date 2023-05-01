@@ -46,6 +46,11 @@ public class BulletScript : MonoBehaviour
                     VFXManager.instance.Spark(transform.position,collision.contacts[0].normal);
                     //spawn poof smoke here
                     VFXManager.instance.Poof(transform.position);
+                    AudioManager.instance.PlaySoundAtLocation(
+                        AudioManager.instance.MiscSounds[1],
+                        0.2f,
+                        transform.position
+                    );
                 }
             }
             Despawn();
@@ -55,6 +60,9 @@ public class BulletScript : MonoBehaviour
         if(col.GetComponent<IDamageable>()!=null){
             col.GetComponent<IDamageable>().OnTakeDamage(bulletDamage);
             //Play Audio here
+            AudioManager.instance.PlayCachedSound(
+                AudioManager.instance.GoreSounds,transform.position,0.6f
+            );
         }
     }
 }

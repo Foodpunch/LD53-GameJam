@@ -39,6 +39,10 @@ public class ScoreManager : MonoBehaviour
         if(morselCount >=5 && !isChonk){
             PlayerAnim.SetTrigger("Chonk");
             VFXManager.instance.Poof(PlayerMovement.instance.transform.position);
+            AudioManager.instance.PlaySoundAtLocation(
+                AudioManager.instance.MiscSounds[9],
+                PlayerMovement.instance.transform.position
+            );
             isChonk = true;
         } 
         isBones = false;
@@ -46,6 +50,10 @@ public class ScoreManager : MonoBehaviour
     public void LoseAllMorsels(){
         morselCount = 0;
         PlayerAnim.SetTrigger("Hurt");
+        AudioManager.instance.PlaySoundAtLocation(
+            AudioManager.instance.MiscSounds[12],
+            PlayerMovement.instance.transform.position
+        );
         isChonk = false;
         isBones = true;
     }

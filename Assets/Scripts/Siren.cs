@@ -36,6 +36,9 @@ public class Siren : BaseEnemy
         GameObject bulletClone = Instantiate(bulletPrefab,shootPoint.position,Quaternion.identity);
         bulletClone.transform.right = DirToPlayer;
         bulletClone.transform.SetParent(ObjectManager.instance.transform);
+        AudioManager.instance.PlayCachedSound(
+            AudioManager.instance.PopSounds,transform.position,0.3f
+        );
     }
     void OnDrawGizmos(){
         Gizmos.color = Color.black;

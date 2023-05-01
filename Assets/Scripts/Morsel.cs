@@ -29,10 +29,16 @@ public class Morsel : MonoBehaviour
         if(collision.collider.CompareTag("Player")){
             //Add to player morsel score
             ScoreManager.instance.AddMorselScore();
+            AudioManager.instance.PlaySoundAtLocation(
+                AudioManager.instance.MiscSounds[0],collision.collider.transform.position
+            );
             gameObject.SetActive(false);
         }
         if(collision.collider.CompareTag("Lava")){
             //Play sizzling sound
+            AudioManager.instance.PlaySoundAtLocation(
+                AudioManager.instance.MiscSounds[8],0.2f,transform.position
+            );
             gameObject.SetActive(false);
         }
     }

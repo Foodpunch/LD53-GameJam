@@ -68,6 +68,9 @@ public class Manticore : BaseEnemy
                 //If tracking player, sprite should always be facing the player direction
                 //If the player is too close
              
+                AudioManager.instance.PlaySoundAtLocation(
+                    AudioManager.instance.MiscSounds[2],0.1f,transform.position,true
+                );
                 if(distanceToPlayer <= minRange){
                     _rb.MovePosition((Vector2)transform.position - DirToPlayer*moveSpeed*Time.fixedDeltaTime);
                 } else {
@@ -100,6 +103,9 @@ public class Manticore : BaseEnemy
             case ManticoreState.SHOOT:
             //play shoot anim
             Shoot();
+            AudioManager.instance.PlaySoundAtLocation(
+                AudioManager.instance.ShootSounds[2],0.3f,shootPoint.position
+            );
             _state = ManticoreState.IDLE;
             stateTimer = 0;
             break;

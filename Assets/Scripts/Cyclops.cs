@@ -28,11 +28,13 @@ public class Cyclops : BaseEnemy
     [SerializeField]
     LayerMask rayLayer;
 
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         _line.SetPosition(0,transform.position);
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class Cyclops : BaseEnemy
             case CyclopsState.IDLE:
                 if(Vector2.Distance(transform.position,PlayerTransform.position)<= detectionRange){
                     if(shootTimer >= .5f){
+                        _anim.SetTrigger("Awake");
                         _state = CyclopsState.TRACK;
                         shootTimer = 0;
                     }
@@ -57,22 +60,26 @@ public class Cyclops : BaseEnemy
                 _line.SetPosition(1,PlayerTransform.position); 
                 if(shootTimer >= 1f){
                     cachedPosition = PlayerTransform.position;
+                     AudioManager.instance.PlaySoundAtLocation(
+                        AudioManager.instance.MiscSounds[10],0.5f,transform.position
+                    );
                     _state = CyclopsState.PREP;
-                    _anim.SetTrigger("Prep");
                     shootTimer = 0;
                 }
             break;
             case CyclopsState.PREP:
                 _line.SetPosition(1,cachedPosition);
                 if(shootTimer >= 0.8f){
+                    AudioManager.instance.PlaySoundAtLocation(
+                        AudioManager.instance.ShootSounds[3],0.3f,transform.position
+                    );
                     _state = CyclopsState.SHOOT;
                     shootTimer = 0;
-                    _anim.SetTrigger("Fire");
                 }
             break;
             case CyclopsState.SHOOT:
                 _line.SetPosition(1,cachedPosition);
-                _line.widthMultiplier = 20f;
+                _line.widthMultiplier = 10f;
                 Shoot();
                 if(shootTimer >= 0.3f){
                     _line.widthMultiplier = 1f;

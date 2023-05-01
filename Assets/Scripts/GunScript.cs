@@ -44,6 +44,9 @@ public class GunScript : MonoBehaviour
         if(Time.time >= nextTimeToFire){
             SpawnBullet();
             nextTimeToFire = Time.time + (1f/fireRate);
+            AudioManager.instance.PlaySoundAtLocation(
+                AudioManager.instance.ShootSounds[0],0.3f,shootPoint.position
+            );
         }
     }
     void SpawnBullet(){

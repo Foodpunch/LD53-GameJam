@@ -249,6 +249,7 @@ MonoBehaviour:
   morselPrefab: {fileID: 4465858225629218673, guid: ef6306cc3537ce545886fd0e7051ab67, type: 3}
   _anim: {fileID: 0}
   RatPrefab: {fileID: 7292016966782828204, guid: 0578f7fa037fa2d45bde0ad4911777cf, type: 3}
+  specialRat: {fileID: 6716448695822960538, guid: e6bcf0429ea711f4b84e4ad22056cd8b, type: 3}
 --- !u!60 &5193050959005081723
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ public class RatNest : BaseEnemy
 {
     [SerializeField]
     GameObject RatPrefab;
+
+    [SerializeField]
+    GameObject specialRat;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -29,7 +32,15 @@ public class RatNest : BaseEnemy
     }
 
     void SpawnRat(){
-        GameObject ratClone = Instantiate(RatPrefab, transform.position, Quaternion.identity);
+        int randomValue = Random.Range(0,101);
+        AudioManager.instance.PlaySoundAtLocation(
+            AudioManager.instance.MiscSounds[4],0.3f,transform.position
+        );
+        GameObject ratClone; 
+        if(randomValue <= 5f){
+            ratClone= Instantiate(specialRat, transform.position, Quaternion.identity);
+        }
+        else  ratClone = Instantiate(RatPrefab, transform.position, Quaternion.identity);
         ratClone.transform.SetParent(ObjectManager.instance.transform);
     }
 }

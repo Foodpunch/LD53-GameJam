@@ -58,6 +58,9 @@ public class Minotaur : BaseEnemy
             }
             if(Vector2.Distance(transform.position,PlayerTransform.transform.position) < detectionRange){
                 isTrackingPlayer = true;
+                AudioManager.instance.PlaySoundAtLocation(
+                    AudioManager.instance.MiscSounds[3],0.5f,transform.position
+                );
                 _state = MinotaurState.PREP;
                 stateTimer = 0;
             }
@@ -77,12 +80,7 @@ public class Minotaur : BaseEnemy
             case MinotaurState.CHARGE:
             _rb.MovePosition((Vector2)transform.position+(cachedDir*moveSpeed*1.5f)*Time.fixedDeltaTime);
             _sr.flipX = (Vector2.Dot(cachedDir.normalized,Vector2.right)>0);
-            // RaycastHit2D chargeRayCheck = Physics2D.Raycast(transform.position,cachedDir,1f,chargeLayer);
-            // if(chargeRayCheck.collider !=null){
-            //     _state = MinotaurState.STUCK;
-            //     stateTimer = 0;
-            // }
-            // Debug.DrawRay(transform.position,cachedDir,Color.red,Time.deltaTime);
+    
             break;
             case MinotaurState.STUCK:
             //stuck anim and logic
@@ -101,6 +99,9 @@ public class Minotaur : BaseEnemy
         if(collision.collider!=null){
             if(_state== MinotaurState.STUCK) return;
             _anim.SetTrigger("Stunned");
+            AudioManager.instance.PlaySoundAtLocation(
+                AudioManager.instance.MiscSounds[11],0.3f,transform.position
+            );
             _state = MinotaurState.STUCK;
             stateTimer = 0;
         }
