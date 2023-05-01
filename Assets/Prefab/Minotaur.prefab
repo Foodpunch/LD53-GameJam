@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd1331b5e826c542b67ee3d007e276a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 1
   currHP: 0
   moveSpeed: 0
   DirToPlayer: {x: 0, y: 0}
@@ -86,8 +87,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0, y: -0.15}
+  m_Size: {x: 0.5, y: 0.25}
   m_Direction: 0
 --- !u!114 &8269750345639356246
 MonoBehaviour:
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae45768f6f18694b8790427dd44980e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 1
   currHP: 0
   moveSpeed: 3.5
   DirToPlayer: {x: 0, y: 0}
@@ -109,7 +111,7 @@ MonoBehaviour:
   _state: 0
   rayLayer:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 6145
   chargeLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -183,7 +185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1118199948250962712, guid: d9fcec6642027fb41bdc082e88ab788f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

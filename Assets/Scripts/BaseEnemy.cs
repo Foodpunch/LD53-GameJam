@@ -5,7 +5,7 @@ using NaughtyAttributes;
 
 public class BaseEnemy : MonoBehaviour, IDamageable
 {
-
+    [SerializeField]
     protected float MaxHP = 1f;
     public float currHP;
 

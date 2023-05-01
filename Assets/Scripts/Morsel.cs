@@ -31,5 +31,9 @@ public class Morsel : MonoBehaviour
             ScoreManager.instance.AddMorselScore();
             gameObject.SetActive(false);
         }
+        if(collision.collider.CompareTag("Lava")){
+            //Play sizzling sound
+            gameObject.SetActive(false);
+        }
     }
 }

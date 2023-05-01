@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 124747369354915979}
   - component: {fileID: 124747369354915976}
   - component: {fileID: 124747369354915977}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 124747369830337986}
   - component: {fileID: 124747369830337987}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 124747370104617961}
   - component: {fileID: 124747370104617960}
   - component: {fileID: 124747370104617967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cyclops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cdedea872807948b3d9708d23d6ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 1
   currHP: 0
   moveSpeed: 0
   DirToPlayer: {x: 0, y: 0}
@@ -337,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8808899104085693611}
   - component: {fileID: 240195702082952937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

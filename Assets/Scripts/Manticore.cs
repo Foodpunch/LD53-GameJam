@@ -29,6 +29,7 @@ public class Manticore : BaseEnemy
     // Start is called before the first frame update
     protected override void Start()
     {
+        MaxHP = 4f;
         base.Start();
         cacheSpawnPos = transform.position;
     }
@@ -73,11 +74,16 @@ public class Manticore : BaseEnemy
             }
             else {
                 _rb.MovePosition((Vector2)transform.position + randomDir*moveSpeed*Time.fixedDeltaTime);
-               RaycastHit2D rayCheck = Physics2D.Raycast(transform.position,randomDir,2f,rayLayer);
+                RaycastHit2D rayCheck = Physics2D.Raycast(transform.position,randomDir,2f,rayLayer);
                 Debug.DrawRay(transform.position,randomDir,Color.red,Time.deltaTime);
                 if(rayCheck.collider!= null){
                     randomDir = cacheSpawnPos-(Vector2)transform.position;
                     randomDir.Normalize();
+                }
+                if(Vector2.Distance(cacheSpawnPos,transform.position) >= 4f){
+                    randomDir = cacheSpawnPos-(Vector2)transform.position;
+                    randomDir.Normalize();
+                    
                 }
                 if(stateTimer >= 1f){
                     _state = ManticoreState.IDLE;
@@ -108,6 +114,10 @@ public class Manticore : BaseEnemy
     {
         base.Die();
 
+    }
+    void OnDrawGizmos(){
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(cacheSpawnPos,4f);
     }
 
 }

@@ -48,7 +48,7 @@ public class Minotaur : BaseEnemy
             case MinotaurState.PATROL:
             //First we pick a random direction, then we make the minotaur walk till it hits something
             _rb.MovePosition((Vector2)transform.position+(randomDir*moveSpeed*0.5f)*Time.fixedDeltaTime);
-            RaycastHit2D minotaurRay = Physics2D.Raycast(transform.position,randomDir,3f,rayLayer);
+            RaycastHit2D minotaurRay = Physics2D.Raycast(transform.position,randomDir,1.5f,rayLayer);
             if(minotaurRay.collider != null){
                 randomDir = DirectionsList[Random.Range(0,DirectionsList.Count)];
             }

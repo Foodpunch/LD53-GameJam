@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hazard
+  - Lava
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - Enemy
   - Morsels
   - IFrame
-  - Hazard
-  - 
-  - 
+  - Spikes
+  - Lava
+  - SirenBullets
   - 
   - 
   - 

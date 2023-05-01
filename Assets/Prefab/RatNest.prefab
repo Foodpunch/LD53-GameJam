@@ -184,8 +184,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7579555100108613002}
   - component: {fileID: 7579555100108613000}
-  - component: {fileID: 7579555100108612999}
   - component: {fileID: 7579555100108613001}
+  - component: {fileID: 5193050959005081723}
   m_Layer: 8
   m_Name: RatNest
   m_TagString: Untagged
@@ -230,8 +230,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &7579555100108612999
-BoxCollider2D:
+--- !u!114 &7579555100108613001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579555100108612998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92ba046a5c8e464b9cbc242103adc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 1
+  currHP: 0
+  moveSpeed: 0
+  DirToPlayer: {x: 0, y: 0}
+  morselPrefab: {fileID: 4465858225629218673, guid: ef6306cc3537ce545886fd0e7051ab67, type: 3}
+  _anim: {fileID: 0}
+  RatPrefab: {fileID: 7292016966782828204, guid: 0578f7fa037fa2d45bde0ad4911777cf, type: 3}
+--- !u!60 &5193050959005081723
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -253,24 +272,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &7579555100108613001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579555100108612998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92ba046a5c8e464b9cbc242103adc89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currHP: 0
-  moveSpeed: 0
-  DirToPlayer: {x: 0, y: 0}
-  morselPrefab: {fileID: 4465858225629218673, guid: ef6306cc3537ce545886fd0e7051ab67, type: 3}
-  _anim: {fileID: 0}
-  RatPrefab: {fileID: 7292016966782828204, guid: 0578f7fa037fa2d45bde0ad4911777cf, type: 3}
+  m_Points:
+    m_Paths:
+    - - {x: 0.02306819, y: 0.32236987}
+      - {x: -0.42625386, y: -0.3801472}
+      - {x: 0.3542192, y: -0.3476519}
