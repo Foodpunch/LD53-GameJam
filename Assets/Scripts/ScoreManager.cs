@@ -9,12 +9,14 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     public TextMeshProUGUI MorselScoreUI;
-    int morselCount = 0;
+    int morselCount = 1;
     [SerializeField]
     Animator PlayerAnim;
 
     bool isChonk = false;
     bool isBones = false;
+
+    public bool isGameOver = false;
     void Awake(){
         instance  = this;
     }
@@ -36,7 +38,7 @@ public class ScoreManager : MonoBehaviour
             PlayerAnim.SetTrigger("Normal");
         }
         morselCount++;
-        if(morselCount >=5 && !isChonk){
+        if(morselCount >=8 && !isChonk){
             PlayerAnim.SetTrigger("Chonk");
             VFXManager.instance.Poof(PlayerMovement.instance.transform.position);
             AudioManager.instance.PlaySoundAtLocation(

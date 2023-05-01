@@ -59,7 +59,7 @@ public class Minotaur : BaseEnemy
             if(Vector2.Distance(transform.position,PlayerTransform.transform.position) < detectionRange){
                 isTrackingPlayer = true;
                 AudioManager.instance.PlaySoundAtLocation(
-                    AudioManager.instance.MiscSounds[3],0.5f,transform.position
+                    AudioManager.instance.MiscSounds[3],0.7f,transform.position
                 );
                 _state = MinotaurState.PREP;
                 stateTimer = 0;

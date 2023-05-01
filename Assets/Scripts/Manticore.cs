@@ -32,7 +32,7 @@ public class Manticore : BaseEnemy
     // Start is called before the first frame update
     protected override void Start()
     {
-        MaxHP = 4f;
+        MaxHP = 3f;
         base.Start();
         cacheSpawnPos = transform.position;
     }

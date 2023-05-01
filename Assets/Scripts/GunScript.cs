@@ -35,6 +35,7 @@ public class GunScript : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButton(0)){
+            if(ScoreManager.instance.isGameOver) return;
             FireGun();
         }
     }

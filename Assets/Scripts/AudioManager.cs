@@ -14,9 +14,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource BGMSource;
     public AudioSource GameOverSource;
 
-    float fadeTime = 0f;
+    // float fadeTime = 0f;
 
-    float delayTimer;
+    // float delayTimer;
 
     //hard code babeyyy~
     public AudioClip[] ShootSounds;
@@ -36,6 +36,9 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ScoreManager.instance.isGameOver){
+            BGMSource.volume -=Time.deltaTime;
+        }
         //if (isGameOver)
         //{
         //    fadeTime += Time.deltaTime;

@@ -29,12 +29,13 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     // Update is called once per frame
     protected virtual void Update()
     {
+        if(ScoreManager.instance.isGameOver) gameObject.SetActive(false);
         DirToPlayer = PlayerTransform.position - transform.position;
         DirToPlayer.Normalize();
     }
     public virtual void OnTakeDamage(float damage){
         _rb.AddForce(-DirToPlayer *5f);
-        Debug.Log(damage);
+        // Debug.Log(damage);
         currHP -= damage;
         //play hurt anim here
         if(currHP <=0 && gameObject.activeInHierarchy){
